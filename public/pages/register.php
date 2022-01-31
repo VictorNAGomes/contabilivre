@@ -33,65 +33,65 @@
             
         <main class="container">
             <h1>Organize sua agenda</h1>
-            <form action="" method="POST">
+            <form action="../../src/controller/register.php" method="POST">
                 <div class="input-label">
                     <label for="title">Nome do exercício</label>
-                    <input id="title" type="text">
+                    <input name="title" id="title" type="text">
                 </div>
 
                 <div class="input-label">
                     <label for="desc">Descrição</label>
-                    <input id="desc" type="textarea">
+                    <input name="desc" id="desc" type="textarea">
                 </div>
 
                 <div class="input-label">
                     <label for="set">número de series</label>
-                    <input id="set" type="number">
+                    <input name="set" id="set" type="number">
                 </div>
 
                 <div class="input-label">
                     <label for="rep">número de repetições</label>
-                    <input id="rep" type="number">
+                    <input name="rep" id="rep" type="number">
                 </div>
 
                 <div class="input-label">
                     <label for="location">Local</label>
                     <select name="location" id="location">
-                        <option value="gym">Academia</option>
-                        <option value="house">Casa</option>
-                        <option value="outdoor">Ar livre</option>
+                        <option value="Academia">Academia</option>
+                        <option value="Casa">Casa</option>
+                        <option value="Ar livre">Ar livre</option>
                     </select>
                 </div>
 
                 <div class="input-label">
                     <label for="date">dia de execução</label>
-                    <input id="date" type="date">
+                    <input name="date" id="date" type="date">
                 </div>
 
                 <div class="input-label">
-                    <label>Musculos atingidos</label>
+                    <label for="muscle">Musculos atingidos</label>
                     <div class="checkbox-option">
-                        <input id="chest" type="checkbox">
+                        <input value="Peito" name="muscle" id="chest" type="checkbox">
                         <label for="chest">Peito</label>
                     </div>
 
                     <div class="checkbox-option">
-                        <input id="shoulder" type="checkbox">
+                        <input value="Ombro" name="muscle" id="shoulder" type="checkbox">
                         <label for="shouder">Ombro</label>
                     </div>
 
                     <div class="checkbox-option">
-                        <input id="arm" type="checkbox">
+                        <input value="Braço" name="muscle" id="arm" type="checkbox">
                         <label for="arm">Braço</label>
                     </div>
 
                     <div class="checkbox-option">
-                        <input id="back" type="checkbox">
+                        <input value="Costas" name="muscle" id="back" type="checkbox">
                         <label for="back">Costas</label>
                     </div>
 
                     <div class="checkbox-option">
-                        <input id="leg" type="checkbox">
+                        <input value="Pernas" name="muscle" id="leg" type="checkbox">
                         <label for="leg">Pernas</label>
                     </div>
                 </div>
@@ -99,22 +99,22 @@
                 <div class="input-label">
                     <label for="goal">objetivo</label>
                     <div class="radio-option">
-                        <input name="goal" id="hypertrophy" type="radio">
+                        <input name="goal" value="Hipertrofia" id="hypertrophy" type="radio">
                         <label for="hypertrophy">Hipertrofia</label>
                     </div>
                     <div class="radio-option">
-                        <input name="goal" id="resistance" type="radio">
+                        <input name="goal" value="Resitência" id="resistance" type="radio">
                         <label for="resistance">Resitência</label>
                     </div>
                     <div class="radio-option">
-                        <input name="goal" id="strength" type="radio">
+                        <input name="goal" value="Força" id="strength" type="radio">
                         <label for="strength">Força</label>
                     </div>
                 </div>
 
                 <div class="input-label">
                     <label for="image">Imagem</label>
-                    <input id="image" type="file">
+                    <input name="image" id="image" type="file">
                 </div>
                 
                 <button type="submit">Cadastrar</button>
