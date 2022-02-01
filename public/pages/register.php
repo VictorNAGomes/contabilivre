@@ -32,19 +32,97 @@
     </nav>
             
         <main class="container">
-            <h1>Organize sua agenda</h1>
+            <h1>Seus jogos favoritos</h1>
             <form action="../../src/controller/register.php" method="POST">
+
                 <div class="input-label">
-                    <label for="str"></label>
+                    <label for="title">Nome do jogo</label>
+                    <input type="text" name="title" id="title" />
+                </div>
+
+                <div class="input-label">
+                    <label for="desc">Descrição</label>
+                    <textarea name="desc" id="desc" /></textarea>
+                </div>
+
+                <div class="input-label">
+                    <label for="price">Preço</label>
+                    <input type="number" name="price" id="price" />
+                </div>
+
+                <div class="input-label">
+                    <label for="type">Plataforma</label>
+                    <select name="platform" id="platform">
+                        <option value="Console">Console</option>
+                        <option value="Desktop">Desktop</option>
+                        <option value="Mobile">Mobile</option>
+                        <option value="Multiplataforma">Multiplataforma</option>
+                    </select>
+                </div>
+
+                <div class="input-label">
+                    <label for="played">Já jogou?</label>
+                    <div class="radio-option">
+                        <input type="radio" name="played" id="yes" value="Sim" />
+                        <label for="yes">Sim</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" name="played" id="no" value="Não" />
+                        <label for="no">Não</label>
+                    </div>
+                </div>
+
+                <div class="input-label">
+                    <label for="releaseDate">Data de lançamento</label>
+                    <input type="date" name="releaseDate" id="releaseDate" />
+                </div>
+
+                <div class="input-label">
+                    <label for="image">Imagem</label>
+                    <input type="file" name="image" id="image" />
+                </div>
+
+                <div class="input-label">
+                    <label for="str">Categoria</label>
 
                     <div class="checkbox-option">
-                        <input value="1" name="array[]" id="1" type="checkbox">
-                        <label for="1">1</label>
+                        <input value="Multijogador" name="category[]" id="Multiplayer" type="checkbox">
+                        <label for="multiplayer">Multijogador</label>
                     </div>
 
                     <div class="checkbox-option">
-                        <input value="2" name="array[]" id="2" type="checkbox">
-                        <label for="2">2</label>
+                        <input value="FPS" name="category[]" id="fps" type="checkbox">
+                        <label for="fps">FPS</label>
+                    </div>
+
+                    <div class="checkbox-option">
+                        <input value="Aventura" name="category[]" id="adventure" type="checkbox">
+                        <label for="adventure">Aveventura</label>
+                    </div>
+
+                    <div class="checkbox-option">
+                        <input value="Ação" name="category[]" id="action" type="checkbox">
+                        <label for="action">Ação</label>
+                    </div>
+
+                    <div class="checkbox-option">
+                        <input value="RPG" name="category[]" id="rpg" type="checkbox">
+                        <label for="rpg">RPG</label>
+                    </div>
+
+                    <div class="checkbox-option">
+                        <input value="Esporte" name="category[]" id="sport" type="checkbox">
+                        <label for="sport">Esporte</label>
+                    </div>
+
+                    <div class="checkbox-option">
+                        <input value="Corrida" name="category[]" id="racing" type="checkbox">
+                        <label for="racing">Corrida</label>
+                    </div>
+
+                    <div class="checkbox-option">
+                        <input value="Simulação" name="category[]" id="simulation" type="checkbox">
+                        <label for="simulation">Simulação</label>
                     </div>
 
                 </div>
