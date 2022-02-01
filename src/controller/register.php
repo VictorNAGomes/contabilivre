@@ -34,7 +34,15 @@
             array_push($data, $releaseDate);
         }
 
-        $sql = "INSERT INTO game (title, description, price, platform, played, releaseDate) VALUES (?,?,?,?,?,?)";
+        if(isset($_FILES['image'])){
+            $ext = strtolower(substr($_FILES['image']['name'],-4));
+            $imgName = date("Y.m.d-H.i.s") . $ext;
+            $dir = "../../public/uploads/";
+            move_uploaded_file($_FILES['image']['tmp_name'], $dir.$imgName);
+            array_push($data, $imgName);
+        }
+
+        $sql = "INSERT INTO game (title, description, price, platform, played, releaseDate, imageName) VALUES (?,?,?,?,?,?,?)";
         $conn->prepare($sql)->execute($data);
 
         $gameId = $conn->lastInsertId();
@@ -45,6 +53,8 @@
                 $conn->prepare($sql)->execute([$category, $gameId]);
             }
         }
+
+
 
         header("location: ../../public/pages/list.php");
     } catch(PDOException $e) {

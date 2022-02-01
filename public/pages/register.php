@@ -33,7 +33,7 @@
             
         <main class="container">
             <h1>Seus jogos favoritos</h1>
-            <form action="../../src/controller/register.php" method="POST">
+            <form action="../../src/controller/register.php" method="POST" enctype="multipart/form-data">
 
                 <div class="input-label">
                     <label for="title">Nome do jogo</label>

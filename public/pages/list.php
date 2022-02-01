@@ -35,6 +35,7 @@
             <?php 
                     while ($row = $games->fetch()) {
                         echo "<div class='card'>";
+                        echo "<img class='card-img-top' src='../uploads/" . $row['imageName'] . "' alt='Imagem do jogo' />";
                         echo "<div class='card-body'>";
                         echo "<h5 class='card-title'>" . $row['title'] . "</h5>";
                         echo "<p>" . $row['description'] . "</p>";

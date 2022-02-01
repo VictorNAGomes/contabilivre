@@ -11,7 +11,8 @@ create table game(
     price int not null,
     platform enum("Console", "Desktop", "Mobile", "Multiplataforma") not null,
     played boolean not null,
-    releaseDate date not null
+    releaseDate date not null,
+    imageName varchar(60) not null
 ) CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 create table gameCategory(
