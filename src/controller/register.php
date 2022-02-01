@@ -22,7 +22,12 @@
         }
         if(isset($_POST['played'])){
             $played = $_POST['played'];
-            array_push($data, $played);
+            if($played == "Sim"){
+                array_push($data, true);
+            } else {
+                array_push($data, false);
+
+            }
         }
         if(isset($_POST['releaseDate'])){
             $releaseDate = $_POST['releaseDate'];
@@ -40,7 +45,7 @@
                 $conn->prepare($sql)->execute([$category, $gameId]);
             }
         }
-        
+
         header("location: ../../public/pages/list.php");
     } catch(PDOException $e) {
         echo 'Ocorreu um erro durante a inserção: ' . $e->getMessage();
