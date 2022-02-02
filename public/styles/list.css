@@ -1,0 +1,36 @@
+body {
+    background-color: rgb(228, 228, 228);
+}
+
+.title {
+    margin-bottom: 4vh;
+    margin-top: 4vh;
+}
+
+.games-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 2%;
+}
+
+.game-card {
+    box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+.delete {
+    margin-left: 1.5vh;
+}
+
+@media only screen and (max-width: 990px) {
+    .games-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 1vh;
+    }
+}
+
+@media only screen and (max-width: 590px) {
+    .games-grid {
+        grid-template-columns: 1fr;
+        gap: 1vh;
+    }
+}
