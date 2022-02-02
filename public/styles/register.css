@@ -1,0 +1,63 @@
+main.container {
+    display: flex;
+    justify-content: center;
+}
+
+.form-container {
+    width: 60vw;
+    padding: 3vh 3vw;
+    margin: 4vh 0;
+    border-radius: 10px;
+    box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    align-self: center;
+}
+
+.form-container form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "t t" "d d" "pr pl" "r play" "c c" "i i" "b b";
+    grid-gap: 0 1vw;
+}
+
+.register {
+    width: 100%;
+    margin: 10vh 0;
+    grid-area: b;
+}
+
+.input-title {
+    grid-area: t;
+}
+.input-desc {
+    grid-area: d;
+}
+.input-price {
+    grid-area: pr;
+}
+.input-platform {
+    grid-area: pl;
+}
+.input-played {
+    grid-area: play;
+}
+.input-releaseDate {
+    grid-area: r;
+}
+.input-image {
+    grid-area: i;
+}
+.input-category {
+    grid-area: c;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: "l l l";
+}
+
+.category-label {
+    grid-area: l
+}

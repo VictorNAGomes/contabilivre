@@ -1,16 +1,8 @@
-body {
-    background-color: rgb(228, 228, 228);
-}
-
-.title {
-    margin-bottom: 4vh;
-    margin-top: 4vh;
-}
-
 .games-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 2%;
+    margin-bottom: 10vh;
 }
 
 .game-card {
@@ -19,6 +11,10 @@ body {
 
 .delete {
     margin-left: 1.5vh;
+}
+
+.btn {
+    width: 7vw;
 }
 
 @media only screen and (max-width: 990px) {

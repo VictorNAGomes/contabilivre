@@ -9,7 +9,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="./public/styles/global.css">
+    <link rel="stylesheet" href="../styles/global.css">
+    <link rel="stylesheet" href="../styles/register.css">
     <title>To do | Cadastro</title>
 </head>
 <body>
@@ -32,104 +33,106 @@
         </div>
     </nav>
     <main class="container">
-        <h1>Seus jogos favoritos</h1>
-        <form action="../../src/controller/register.php" method="POST" enctype="multipart/form-data">
+        <div class="form-container bg-light">
+            <h1 class="title">Adicione seus jogos favoritos</h1>
+            <form action="../../src/controller/register.php" method="POST" enctype="multipart/form-data">
 
-            <div class="input-label">
-                <label for="title">Nome do jogo</label>
-                <input type="text" name="title" id="title" />
-            </div>
-
-            <div class="input-label">
-                <label for="desc">Descrição</label>
-                <textarea name="desc" id="desc" /></textarea>
-            </div>
-
-            <div class="input-label">
-                <label for="price">Preço</label>
-                <input type="number" name="price" id="price" />
-            </div>
-
-            <div class="input-label">
-                <label for="type">Plataforma</label>
-                <select name="platform" id="platform">
-                    <option value="Console">Console</option>
-                    <option value="Desktop">Desktop</option>
-                    <option value="Mobile">Mobile</option>
-                    <option value="Multiplataforma">Multiplataforma</option>
-                </select>
-            </div>
-
-            <div class="input-label">
-                <label for="played">Já jogou?</label>
-                <div class="radio-option">
-                    <input type="radio" name="played" id="yes" value="Sim" />
-                    <label for="yes">Sim</label>
-                </div>
-                <div class="radio-option">
-                    <input type="radio" name="played" id="no" value="Não" />
-                    <label for="no">Não</label>
-                </div>
-            </div>
-
-            <div class="input-label">
-                <label for="releaseDate">Data de lançamento</label>
-                <input type="date" name="releaseDate" id="releaseDate" />
-            </div>
-
-            <div class="input-label">
-                <label for="image">Imagem</label>
-                <input type="file" name="image" id="image" />
-            </div>
-
-            <div class="input-label">
-                <label for="str">Categoria</label>
-
-                <div class="checkbox-option">
-                    <input value="Multijogador" name="category[]" id="Multiplayer" type="checkbox">
-                    <label for="multiplayer">Multijogador</label>
+                <div class="input-title form-group">
+                    <label class="font-weight-bold" for="title">Nome do jogo</label>
+                    <input class="form-control" type="text" name="title" id="title" />
                 </div>
 
-                <div class="checkbox-option">
-                    <input value="FPS" name="category[]" id="fps" type="checkbox">
-                    <label for="fps">FPS</label>
+                <div class="input-desc form-group">
+                    <label class="font-weight-bold" for="desc">Descrição</label>
+                    <textarea class="form-control" name="desc" id="desc" /></textarea>
                 </div>
 
-                <div class="checkbox-option">
-                    <input value="Aventura" name="category[]" id="adventure" type="checkbox">
-                    <label for="adventure">Aveventura</label>
+                <div class="input-price form-group">
+                    <label class="font-weight-bold" for="price">Preço</label>
+                    <input class="form-control" type="number" value="0" name="price" id="price" />
                 </div>
 
-                <div class="checkbox-option">
-                    <input value="Ação" name="category[]" id="action" type="checkbox">
-                    <label for="action">Ação</label>
+                <div class="input-platform form-group">
+                    <label class="font-weight-bold" for="type">Plataforma</label>
+                    <select class="form-control" name="platform" id="platform">
+                        <option value="Console">Console</option>
+                        <option value="Desktop">Desktop</option>
+                        <option value="Mobile">Mobile</option>
+                        <option value="Multiplataforma">Multiplataforma</option>
+                    </select>
                 </div>
 
-                <div class="checkbox-option">
-                    <input value="RPG" name="category[]" id="rpg" type="checkbox">
-                    <label for="rpg">RPG</label>
+                <div class="input-played form-group">
+                    <label class="font-weight-bold" for="played">Já jogou?</label>
+                    <div class="radio-option">
+                        <input type="radio" name="played" id="yes" value="Sim" />
+                        <label for="yes">Sim</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" name="played" id="no" value="Não" />
+                        <label for="no">Não</label>
+                    </div>
                 </div>
 
-                <div class="checkbox-option">
-                    <input value="Esporte" name="category[]" id="sport" type="checkbox">
-                    <label for="sport">Esporte</label>
+                <div class="input-releaseDate form-group">
+                    <label class="font-weight-bold" for="releaseDate">Data de lançamento</label>
+                    <input class="form-control" type="date" name="releaseDate" id="releaseDate" />
                 </div>
 
-                <div class="checkbox-option">
-                    <input value="Corrida" name="category[]" id="racing" type="checkbox">
-                    <label for="racing">Corrida</label>
+                <div class="input-category form-group">
+                    <label class="font-weight-bold category-label">Categoria</label>
+
+                    <div class="checkbox-option">
+                        <input value="Multijogador" name="category[]" id="Multiplayer" type="checkbox">
+                        <label for="multiplayer">Multijogador</label>
+                    </div>
+
+                    <div class="checkbox-option">
+                        <input value="FPS" name="category[]" id="fps" type="checkbox">
+                        <label for="fps">FPS</label>
+                    </div>
+
+                    <div class="checkbox-option">
+                        <input value="Aventura" name="category[]" id="adventure" type="checkbox">
+                        <label for="adventure">Aveventura</label>
+                    </div>
+
+                    <div class="checkbox-option">
+                        <input value="Ação" name="category[]" id="action" type="checkbox">
+                        <label for="action">Ação</label>
+                    </div>
+
+                    <div class="checkbox-option">
+                        <input value="RPG" name="category[]" id="rpg" type="checkbox">
+                        <label for="rpg">RPG</label>
+                    </div>
+
+                    <div class="checkbox-option">
+                        <input value="Esporte" name="category[]" id="sport" type="checkbox">
+                        <label for="sport">Esporte</label>
+                    </div>
+
+                    <div class="checkbox-option">
+                        <input value="Corrida" name="category[]" id="racing" type="checkbox">
+                        <label for="racing">Corrida</label>
+                    </div>
+
+                    <div class="checkbox-option">
+                        <input value="Simulação" name="category[]" id="simulation" type="checkbox">
+                        <label for="simulation">Simulação</label>
+                    </div>
+
                 </div>
 
-                <div class="checkbox-option">
-                    <input value="Simulação" name="category[]" id="simulation" type="checkbox">
-                    <label for="simulation">Simulação</label>
+                <div class="input-image custom-file">
+                    <input class="custom-file-input" type="file" name="image" id="image" />
+                    <label class="custom-file-label" for="image">Escolha uma imagem</label>
                 </div>
+                
+                <button class="btn btn-dark register btn-lg" type="submit">Cadastrar</button>
 
-            </div>
-            
-            <button type="submit">Cadastrar</button>
-
-        </form>
+            </form>
+        </div>
     </main>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
