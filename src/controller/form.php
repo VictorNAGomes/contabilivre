@@ -34,26 +34,32 @@
             array_push($data, $releaseDate);
         }
 
-        if(isset($_FILES['image'])){
-            $ext = strtolower(substr($_FILES['image']['name'],-4));
-            $imgName = date("Y.m.d-H.i.s") . $ext;
-            $dir = "../../public/uploads/";
-            move_uploaded_file($_FILES['image']['tmp_name'], $dir.$imgName);
-            array_push($data, $imgName);
-        }
 
-        $sql = "INSERT INTO game (title, description, price, platform, played, releaseDate, imageName) VALUES (?,?,?,?,?,?,?)";
-        $conn->prepare($sql)->execute($data);
+        if(isset($_GET['id'])) {
+            $id = $_GET['id'];
+            $sql = "UPDATE game SET title = ?, description = ?, price = ?, platform = ?, played = ?, releaseDate = ? WHERE id = " . $id;
+            $conn->prepare($sql)->execute($data);
+        } else {
+            if(isset($_FILES['image'])){
+                $ext = strtolower(substr($_FILES['image']['name'],-4));
+                $imgName = date("Y.m.d-H.i.s") . $ext;
+                $dir = "../../public/uploads/";
+                move_uploaded_file($_FILES['image']['tmp_name'], $dir.$imgName);
+                array_push($data, $imgName);
+            }
 
-        $gameId = $conn->lastInsertId();
+            $sql = "INSERT INTO game (title, description, price, platform, played, releaseDate, imageName) VALUES (?,?,?,?,?,?,?)";
+            $conn->prepare($sql)->execute($data);
 
-        if(isset($_POST['category'])){
-            foreach($_POST['category'] as $category ) {
-                $sql = "INSERT INTO gameCategory (category, gameId) VALUES (?,?)";
-                $conn->prepare($sql)->execute([$category, $gameId]);
+            $gameId = $conn->lastInsertId();
+
+            if(isset($_POST['category'])){
+                foreach($_POST['category'] as $category ) {
+                    $sql = "INSERT INTO gameCategory (category, gameId) VALUES (?,?)";
+                    $conn->prepare($sql)->execute([$category, $gameId]);
+                }
             }
         }
-
 
 
         header("location: ../../public/pages/list.php");

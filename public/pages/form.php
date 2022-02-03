@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="../styles/global.css">
     <link rel="stylesheet" href="../styles/register.css">
-    <title>To do | Cadastro</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -30,8 +29,8 @@
     </nav>
     <main class="container">
         <div class="form-container bg-light">
-            <h1 class="title">Adicione seus jogos favoritos</h1>
-            <form action="../../src/controller/register.php" method="POST" enctype="multipart/form-data">
+            <h1 class="title" id="h1-title"></h1>
+            <form action="../../src/controller/form.php" id="game-form" method="POST" enctype="multipart/form-data">
 
                 <div class="input-title form-group">
                     <label class="font-weight-bold" for="input-title">Nome do jogo</label>
@@ -39,18 +38,18 @@
                 </div>
 
                 <div class="input-desc form-group">
-                    <label class="font-weight-bold" for="desc">Descrição</label>
-                    <textarea class="form-control" name="desc" id="desc" /></textarea>
+                    <label class="font-weight-bold" for="input-desc">Descrição</label>
+                    <textarea class="form-control" name="desc" id="input-desc" /></textarea>
                 </div>
 
                 <div class="input-price form-group">
-                    <label class="font-weight-bold" for="price">Preço</label>
-                    <input class="form-control" type="number" value="0" name="price" id="price" />
+                    <label class="font-weight-bold" for="input-price">Preço</label>
+                    <input class="form-control" type="number" value="0" name="price" id="input-price" />
                 </div>
 
                 <div class="input-platform form-group">
-                    <label class="font-weight-bold" for="type">Plataforma</label>
-                    <select class="form-control" name="platform" id="platform">
+                    <label class="font-weight-bold" for="input-platform">Plataforma</label>
+                    <select class="form-control" name="platform" id="input-platform">
                         <option value="Console">Console</option>
                         <option value="Desktop">Desktop</option>
                         <option value="Mobile">Mobile</option>
@@ -71,8 +70,8 @@
                 </div>
 
                 <div class="input-releaseDate form-group">
-                    <label class="font-weight-bold" for="releaseDate">Data de lançamento</label>
-                    <input class="form-control" type="date" name="releaseDate" id="releaseDate" />
+                    <label class="font-weight-bold" for="input-releaseDate">Data de lançamento</label>
+                    <input class="form-control" type="date" name="releaseDate" id="input-releaseDate" />
                 </div>
 
                 <div class="input-category form-group">
@@ -90,7 +89,7 @@
 
                     <div class="checkbox-option">
                         <input value="Aventura" name="category[]" id="adventure" type="checkbox">
-                        <label for="adventure">Aveventura</label>
+                        <label for="adventure">Aventura</label>
                     </div>
 
                     <div class="checkbox-option">
@@ -120,7 +119,7 @@
 
                 </div>
 
-                <div class="input-image custom-file">
+                <div id="input-image" class="input-image custom-file">
                     <input class="custom-file-input" type="file" name="image" id="image" />
                     <label class="custom-file-label" for="image">Escolha uma imagem</label>
                 </div>
@@ -146,18 +145,43 @@
             $id = $_GET['id'];
     
             $game = $conn->query("SELECT * FROM game WHERE id = " . $id);
+            $gameCategories = $conn->query("SELECT * FROM gameCategory WHERE gameId = " . $id);
     
             $result = $game->fetchAll(\PDO::FETCH_ASSOC);
+            $categories = $gameCategories->fetchAll(\PDO::FETCH_ASSOC);
            
             $json = json_encode($result);
+            $categoryObj = json_encode($categories);
         }catch(PDOException $e) {
             echo 'Ocorreu um erro durante a listagem: ' . $e->getMessage();
         }
         ?>
         <script>
             var game = '<?php print_r($json); ?>'
-            update(game);
+            var category = '<?php print_r($categoryObj); ?>'
+
+            let title = document.getElementById("h1-title")
+            title.innerHTML = "Edite o jogo"
+
+            let btn = document.querySelector("button.register")
+            btn.innerHTML = "Editar"
+
+            let gameForm = document.getElementById("game-form")
+            gameForm.setAttribute("action", "../../src/controller/form.php?id=" + <?= $id ?>)
+
+            let inputImage = document.getElementById("")
+
+            update(game, category)
         </script>
+        <title>To do | Editar</title>
+        <?php
+    } else {
+        ?>
+        <script>
+            var title = document.getElementById("h1-title")
+            title.innerHTML = "Cadastre seu jogo"
+        </script>
+        <title>To do | Cadastrar</title>
         <?php
     }
 ?>
