@@ -20,7 +20,7 @@ main.container {
 .form-container form {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-areas: "t t" "d d" "pr pl" "r play" "c c" "i i" "b b";
+    grid-template-areas: "t t" "d d" "pr pl" "r r" "play play" "c c" "i i" "b b";
     grid-gap: 0 1vw;
 }
 
@@ -28,6 +28,10 @@ main.container {
     width: 100%;
     margin: 10vh 0;
     grid-area: b;
+}
+
+.form-group {
+    min-width: 10vw;
 }
 
 .input-title {
@@ -61,4 +65,23 @@ main.container {
 
 .category-label {
     grid-area: l
+}
+
+@media only screen and (max-width: 680px) {
+    .form-container form {
+        grid-template-columns: 1fr;
+        grid-template-areas: "t" "d" "pr" "pl" "r" "play" "c" "i" "b";
+    }
+
+    .input-category {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: "l l";
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .input-category {
+        grid-template-columns: 1fr;
+        grid-template-areas: "l";
+    }
 }

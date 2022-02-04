@@ -3,10 +3,21 @@
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 2%;
     margin-bottom: 10vh;
+    padding: 3vh 5vw;
 }
 
 .game-card {
     box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.2);
+    max-width: 80vw;
+}
+
+.card-img-top {
+    height: 30vh;
+    object-fit: scale-down;
+}
+
+.card-header {
+    min-height: 30vh;
 }
 
 .delete {
@@ -15,6 +26,9 @@
 
 .btn {
     width: 7vw;
+    min-height: 5vh;
+    max-height: 7vh;
+    text-align: center;
 }
 
 .categories-ul {
@@ -28,6 +42,7 @@
 .btns {
     display: flex;
     justify-content: center;
+    align-items: flex-end;
 }
 
 @media only screen and (max-width: 990px) {
