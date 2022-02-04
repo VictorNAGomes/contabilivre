@@ -50,12 +50,13 @@ main.container {
 }
 .input-image {
     grid-area: i;
+    margin-top: 3vh;
 }
 .input-category {
     grid-area: c;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-areas: "l l l";
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-areas: "l l l l";
 }
 
 .category-label {

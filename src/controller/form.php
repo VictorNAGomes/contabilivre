@@ -1,6 +1,7 @@
 <?php
     try {
         include_once '../database/conn.php';
+        include_once './sendMessage.php';
 
         $data = [];
 
@@ -32,6 +33,9 @@
         if(isset($_POST['releaseDate'])){
             $releaseDate = $_POST['releaseDate'];
             array_push($data, $releaseDate);
+            $dateSplit = explode("-", $releaseDate);
+            $monthName = date("F", mktime(0, 0, 0, $dateSplit[1], 10));
+            $date = $monthName . " "  . $dateSplit[2] . " " . $dateSplit[0];
         }
 
 
@@ -39,6 +43,16 @@
             $id = $_GET['id'];
             $sql = "UPDATE game SET title = ?, description = ?, price = ?, platform = ?, played = ?, releaseDate = ? WHERE id = " . $id;
             $conn->prepare($sql)->execute($data);
+
+            if(isset($_POST['category'])){
+                $conn->query("DELETE FROM gameCategory WHERE gameId = " . $id);
+
+                foreach($_POST['category'] as $category ) {
+                    $sql = "INSERT INTO gameCategory (category, gameId) VALUES (?,?)";
+                    $conn->prepare($sql)->execute([$category, $id]);
+                }
+            }
+
         } else {
             if(isset($_FILES['image'])){
                 $ext = strtolower(substr($_FILES['image']['name'],-4));

@@ -11,7 +11,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="#">To Do</a>
+            <a class="navbar-brand" href="../../index.php">MyGameList</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -169,11 +169,11 @@
             let gameForm = document.getElementById("game-form")
             gameForm.setAttribute("action", "../../src/controller/form.php?id=" + <?= $id ?>)
 
-            let inputImage = document.getElementById("")
+            document.querySelector(".input-image").style.display = "none"
 
             update(game, category)
         </script>
-        <title>To do | Editar</title>
+        <title>Editar | MyGameList</title>
         <?php
     } else {
         ?>
@@ -181,7 +181,7 @@
             var title = document.getElementById("h1-title")
             title.innerHTML = "Cadastre seu jogo"
         </script>
-        <title>To do | Cadastrar</title>
+        <title>Cadastrar | MyGameList</title>
         <?php
     }
 ?>

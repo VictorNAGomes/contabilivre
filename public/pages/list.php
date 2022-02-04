@@ -10,12 +10,12 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="../styles/global.css">
     <link rel="stylesheet" href="../styles/list.css">
-    <title>To Do</title>
+    <title>Listar | MyGameList</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="#">To Do</a>
+            <a class="navbar-brand" href="../../index.php">MyGameList</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -47,8 +47,14 @@
                 echo "</li>";
                 echo "<li class='list-group-item'>Data de lançamento: " . $row['releaseDate'] . "</li   >";
                 echo "<li class='list-group-item'>R$" . $row['price'] . ",00</li>";
+                echo "<li class='list-group-item'><ul class='categories-ul'>";
+                $gameCategories = $conn->query("SELECT * FROM gameCategory WHERE gameId = " . $row['id']);
+                while ($category = $gameCategories->fetch()){
+                    echo "<li>" . $category["category"] . "</li>";
+                }
+                echo "</ul></li>";
                 echo "</ul>";
-                echo "<div class='card-body'>";
+                echo "<div class='card-body btns'>";
                 echo "<a class='update btn btn-outline-success' href='form.php?id=". $row['id'] ."'>Editar</a>";
                 echo "<a class='delete btn btn-outline-danger' href='../../src/controller/delete.php?id=". $row['id'] ."'>Deletar</a>";
                 echo "</div>";
