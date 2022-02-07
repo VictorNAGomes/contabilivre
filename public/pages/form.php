@@ -30,6 +30,12 @@
     <main class="container">
         <div class="form-container bg-light">
             <h1 class="title" id="h1-title"></h1>
+                    <?php
+                        if (isset($_GET['msg'])) {
+                            $msg = $_GET['msg'];
+                            echo "<p class='text-danger'>" . $msg . "</p>";
+                        }
+                    ?>
             <form action="../../src/controller/form.php" id="game-form" method="POST" enctype="multipart/form-data">
 
                 <div class="input-title form-group">
@@ -123,6 +129,7 @@
                     <input class="custom-file-input" type="file" name="image" id="image" />
                     <label class="custom-file-label" for="image">Escolha uma imagem</label>
                 </div>
+
                 
                 <button class="btn btn-dark register btn-lg" type="submit">Cadastrar</button>
 
