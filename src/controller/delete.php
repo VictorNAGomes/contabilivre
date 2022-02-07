@@ -4,7 +4,11 @@
 
         if(isset($_GET['id'])){
             $id = $_GET['id'];
-            $games = $conn->query("DELETE FROM game WHERE id = " . $id);
+            $game = $conn->query("SELECT * FROM game WHERE id = " . $id);
+            while ($row = $game->fetch()) {
+                unlink('../../public/uploads/' . $row['imageName']);
+            }
+            $conn->query("DELETE FROM game WHERE id = " . $id);
         }
         
         header("location: ../../public/pages/list.php");
