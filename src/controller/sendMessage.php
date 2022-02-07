@@ -8,7 +8,6 @@ function sendMessage($releaseDate, $gameTitle) {
     array_push($hashes_array, array(
         "id" => "access-button",
         "text" => "Acessar",
-        "icon" => "http://i.imgur.com/N8SN8ZS.png",
         "url" => "https://mygamelist1.000webhostapp.com/index.php"
     ));
     $fields = array(

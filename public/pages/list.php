@@ -34,31 +34,35 @@
     <main class="container">
         <h1 class="title">Jogos Adicionados</h1>
         <div class="games-grid">
-        <?php 
-            while ($row = $games->fetch()) {
-                echo "<div class='card bg-light mb-3 game-card'>";
-                echo "<img class='card-img-top' src='../uploads/" . $row['imageName'] . "' alt='Imagem do jogo' />";
-                echo "<div class='card-header'><h5 class='card-title'>" . $row['title'] . "</h5>";
-                echo "<p>" . $row['description'] . "</p></div>";
-                echo "<ul class='list-group list-group-flush'>";
-                echo "<li class='list-group-item'>Plataforma: " . $row['platform'] . "</li>";
-                echo "<li class='list-group-item'>Já jogou: ";
-                echo $row['played'] == true ?  "Sim" : "Não";
-                echo "</li>";
-                echo "<li class='list-group-item'>Data de lançamento: " . $row['releaseDate'] . "</li   >";
-                echo "<li class='list-group-item'>R$" . $row['price'] . ",00</li>";
-                echo "<li class='list-group-item'><ul class='categories-ul'>";
-                $gameCategories = $conn->query("SELECT * FROM gameCategory WHERE gameId = " . $row['id']);
-                while ($category = $gameCategories->fetch()){
-                    echo "<li>" . $category["category"] . "</li>";
+        <?php
+            if ($rowNumber == 0) {
+                echo "<p>Ainda não há jogos cadastrados, <a href='./form.php'>cadastrar</a>.</p>";
+            } else {
+                while ($row = $games->fetch()) {
+                    echo "<div class='card bg-light mb-3 game-card'>";
+                    echo "<img class='card-img-top' src='../uploads/" . $row['imageName'] . "' alt='Imagem do jogo' />";
+                    echo "<div class='card-header'><h5 class='card-title'>" . $row['title'] . "</h5>";
+                    echo "<p>" . $row['description'] . "</p></div>";
+                    echo "<ul class='list-group list-group-flush'>";
+                    echo "<li class='list-group-item'>Plataforma: " . $row['platform'] . "</li>";
+                    echo "<li class='list-group-item'>Já jogou: ";
+                    echo $row['played'] == true ?  "Sim" : "Não";
+                    echo "</li>";
+                    echo "<li class='list-group-item'>Data de lançamento: " . $row['releaseDate'] . "</li   >";
+                    echo "<li class='list-group-item'>R$" . $row['price'] . ",00</li>";
+                    echo "<li class='list-group-item'><ul class='categories-ul'>";
+                    $gameCategories = $conn->query("SELECT * FROM gameCategory WHERE gameId = " . $row['id']);
+                    while ($category = $gameCategories->fetch()){
+                        echo "<li>" . $category["category"] . "</li>";
+                    }
+                    echo "</ul></li>";
+                    echo "</ul>";
+                    echo "<div class='card-body btns'>";
+                    echo "<a class='update btn btn-outline-success' href='form.php?id=". $row['id'] ."'>Editar</a>";
+                    echo "<a class='delete btn btn-outline-danger' href='../../src/controller/delete.php?id=". $row['id'] ."'>Deletar</a>";
+                    echo "</div>";
+                    echo "</div>";
                 }
-                echo "</ul></li>";
-                echo "</ul>";
-                echo "<div class='card-body btns'>";
-                echo "<a class='update btn btn-outline-success' href='form.php?id=". $row['id'] ."'>Editar</a>";
-                echo "<a class='delete btn btn-outline-danger' href='../../src/controller/delete.php?id=". $row['id'] ."'>Deletar</a>";
-                echo "</div>";
-                echo "</div>";
             }
         ?>
         </div>

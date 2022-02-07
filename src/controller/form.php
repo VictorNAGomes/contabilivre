@@ -78,7 +78,8 @@
             }else {
                 if(isset($_FILES['image'])){
                     $ext = strtolower(substr($_FILES['image']['name'],-4));
-                    $imgName = date("Y.m.d-H.i.s") . $ext;
+                    $random = rand(0,100000000000);
+                    $imgName = $random . date("Y.m.d-H.i.s") . $ext;
                     $dir = "../../public/uploads/";
                     move_uploaded_file($_FILES['image']['tmp_name'], $dir.$imgName);
                     array_push($data, $imgName);

@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="./public/styles/global.css">
+    <link rel="stylesheet" href="./public/styles/landing.css">
     <title>MyGameList</title>
 </head>
 <body>
@@ -32,7 +33,16 @@
     </nav>
             
     <main class="container">
-        <h1>Adicione seus jogos favoritos</h1>
+        <div class="card">
+            <div class="card-header">
+                <h1 class="card-title">Adicione seus jogos favoritos</h1>
+            </div>
+            <div class="card-body">
+                <p>Mantenha sua lista de jogos organizadas e fique sabendo dos lançamentos dos seus jogos favoritos com o MyGameList</p>
+                <p>Comece agora: </p>
+                <a class="btn btn-dark" href="./public/pages/form.php">Cadastrar</a>
+            </div>
+        </div>
     </main>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
